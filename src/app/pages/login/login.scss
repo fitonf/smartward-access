@@ -66,6 +66,17 @@
       }
     }
   }
+
+  .field {
+    margin-bottom: 0.75rem;
+  }
+  
+  .error {
+    margin-top: 0.25rem;
+    font-size: 0.8rem;
+    color: #c62828;
+  }
+  
   
   // Optional: page background centering
   :host {

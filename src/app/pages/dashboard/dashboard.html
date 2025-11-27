@@ -1,2 +1,4 @@
 <h2>Dashboard</h2>
-<p>Welcome to SmartWard Access dashboard (placeholder).</p>
+<p>Welcome, {{ email || 'user' }}.</p>
+
+<button (click)="logout()">Logout</button>
