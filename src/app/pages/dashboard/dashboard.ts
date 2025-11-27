@@ -7,8 +7,8 @@ import { Router } from '@angular/router';
   selector: 'app-dashboard',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.scss'
+  templateUrl: './dashboard.html',
+  styleUrl: './dashboard.scss'
 })
 export class Dashboard {
   email: string | null;
