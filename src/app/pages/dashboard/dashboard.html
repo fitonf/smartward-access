@@ -1,4 +1,43 @@
 <h2>Dashboard</h2>
 <p>Welcome, {{ email || 'user' }}.</p>
 
+<button (click)="toggleShowAll()">
+  {{ showAll ? 'Show only my logins' : 'Show all logins' }}
+</button>
+
+<h2>Login audit</h2>
+
+<ng-container *ngIf="loginAudit$ | async as loginAudit">
+  <div *ngIf="loginAudit.length === 0">
+    No login events found.
+  </div>
+
+  <table *ngIf="loginAudit.length > 0" class="table table-sm">
+    <thead>
+      <tr>
+        <th>User</th>
+        <th>Login time</th>
+        <th>IP</th>
+        <th>Success</th>
+        <th>User agent</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let e of loginAudit">
+        <td [ngClass]="{ 'fw-bold': e.userEmail === email }">
+          {{ e.userEmail }}
+        </td>
+        <td>{{ e.loginAt | date:'short' }}</td>
+        <td>{{ e.ip || '-' }}</td>
+        <td>
+          <span [class.text-success]="e.success" [class.text-danger]="!e.success">
+            {{ e.success ? 'Yes' : 'No' }}
+          </span>
+        </td>
+        <td>{{ e.userAgent }}</td>
+      </tr>
+    </tbody>
+  </table>
+</ng-container>
+
 <button (click)="logout()">Logout</button>
